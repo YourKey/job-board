@@ -31,6 +31,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        if (!app()->isProduction()) {
+            Schema::dropIfExists('failed_jobs');
+        }
     }
 };
