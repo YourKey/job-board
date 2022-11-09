@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     @include('layouts.head')
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-base-200">
+    <body class="font-sans antialiased bg-base-200">
+        <div class="min-h-screen">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -19,5 +19,6 @@
                 {{ $slot }}
             </main>
         </div>
+        @include('layouts.footer')
     </body>
 </html>

@@ -13,12 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function() {
+    Route::resource('jobs', \App\Http\Controllers\JobVacancyController::class)
+        ->only(['create', 'store']);
+    Route::middleware(['owner.job'])->group(function() {
+        Route::resource('jobs', \App\Http\Controllers\JobVacancyController::class)
+            ->only(['edit', 'update', 'destroy']);
+    });
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [\App\Http\Controllers\JobVacancyController::class, 'index'])
+    ->name('jobs.index');
+Route::get('/jobs/{job}', [\App\Http\Controllers\JobVacancyController::class, 'show'])
+    ->name('jobs.show');
 
 require __DIR__.'/auth.php';

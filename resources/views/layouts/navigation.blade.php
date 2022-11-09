@@ -9,11 +9,11 @@
                     <li><a>Item 1</a></li>
                 </ul>
             </div>
-            <a class="btn btn-ghost normal-case text-xl">{{ config('app.name', 'JobBoard') }}</a>
+            <a href="/" class="btn btn-ghost normal-case text-xl">{{ config('app.name', 'JobBoard') }}</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal p-0">
-                <li><a>Item 1</a></li>
+                <li><a href="{{ route('jobs.create') }}">{{ __('Create vacancy') }}</a></li>
             </ul>
         </div>
         <div class="navbar-end gap-4">
